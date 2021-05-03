@@ -1,0 +1,45 @@
+[
+    {
+        "nome": "Brasil500",
+        "foto": "img/imagem-9.jpg",
+        "valor": "450,00",
+        "nome_do_produto":"Moeda comemorativa Brasil 500 anos",
+        "descricao":"Fabricado apenas 500 moedas em comemoração aos quinhentos anos de descobrimento do país. Item raríssmo por"
+    },
+    {
+        "nome": "USA_1913",
+        "foto": "img/imagem-2.jpg",
+        "valor": "$480,00",
+        "nome_do_produto":"Moeda 5 centavos USA de 1913",
+        "descricao":"Uma das moedas de cinco centavos mais difíceis de se encontrar atualmente, tento poucos exemplares no mercado. Por apenas"
+    },
+    {
+        "nome": "1804_USA",
+        "foto": "img/imagem-3.jpg",
+        "valor": "$565,00",
+        "nome_do_produto":"Moeda de 1804 nos Estados Unidos",
+        "descricao":"Um dos primeiro modelos de moeda dos Estados Unidos da América,\n essa moeda é de uma raridade elevada em nosso país. Por:"
+    },
+    {
+        "nome": "inglesa_1725",
+        "foto": "img/imagem-7.png",
+        "valor": "$786,00",
+        "nome_do_produto":"Moeda inglesa de 1725",
+        "descricao":"Moeda de ouro de 1725 da Ingleterra, seu preço é tão alto quanto a dificuldade de ser encontrada. Época das cruzadas e templários. Preço:"
+    },
+    {
+        "nome": "portuguesa_50",
+        "foto": "img/imagem-5.jpeg",
+        "valor": "$550,00",
+        "nome_do_produto":"Moeda portuguesa 50 centavos de 1925",
+        "descricao":"Moeda rara de portugal devido a baixa quantidade de exemplares existentes e ao contexto histórico do país de turbulência. Preço:"
+    },
+    {
+        "nome": "1_escudo",
+        "foto": "img/imagem-6.jpg",
+        "valor": "$600,00",
+        "nome_do_produto":"Moeda de 1 escudo de Portugal",
+        "descricao":"Moeda de um escudo de Portugal, rara pois o país não utiliza mais o escudo como moeda. Preço:"
+    }
+    
+]
