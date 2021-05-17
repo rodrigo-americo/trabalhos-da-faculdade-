@@ -21,27 +21,27 @@
                     
                     
                     <div class="box">
-                        <form action="login.php" method="POST">
+                        <form action="processa.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input name="nome" name="text" class="input is-large" placeholder="Seu Nome" autofocus="">
+                                    <input name="nome" name="text" class="input is-large" placeholder="Seu Nome" >
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input name="email" class="input is-large" type="password" placeholder="Seu e-mail">
+                                    <input name="email" class="input is-large" type="email" placeholder="Seu e-mail">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="endereco" name="text" class="input is-large" placeholder="Seu endereço" autofocus="">
+                                    <input name="cpfUsuario"  class="input is-large" type="cpf" placeholder="Seu cpf" maxlength="11">
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input name="senha" class="input is-large" type="password" placeholder="Sua senha (mínimo 6 digitos)">
+                                    <input name="password" class="input is-large" type="password" placeholder="Sua senha (mínimo 6 digitos)">
                                 </div>
                             </div>
                             

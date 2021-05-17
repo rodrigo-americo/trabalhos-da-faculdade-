@@ -20,22 +20,22 @@
                     
                     
                     <div class="box">
-                        <form action="processa.php" method="POST">
+                        <form action="verificaUsuario.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input type='email' name="email" class="input is-large" placeholder="Seu e-mail" autofocus="">
+                                    <input type='email' name="email" class="input is-large" placeholder="email" >
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input type='password' name="senha" class="input is-large" type="password" placeholder="Sua senha">
+                                    <input type='password' name="password" class="input is-large" type="password" placeholder="Seu email">
                                 </div>
                             </div>
                             <input type="submit" class="button is-block is-link is-large is-fullwidth"></button>
                             <div>
                                 <h3>
-                                <a href="http://localhost/projeto_p1_php/php_p1/cadastro.php" target="_blank">Criar conta</a>                                
+                                <a href="http://localhost/trabalhos-da-faculdade-/cadastro.php" target="_blank">Criar conta</a>                                
                                 </h3>
                             </div>
                         </form>
