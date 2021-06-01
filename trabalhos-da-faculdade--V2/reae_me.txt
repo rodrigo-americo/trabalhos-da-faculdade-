@@ -1,0 +1,3 @@
+site de uma loja de moedas e artigos unicos 
+
+projeto feito durante 3 semestre da faculdade com foco em utilizar php e banco de dados 
