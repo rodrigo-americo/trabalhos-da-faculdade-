@@ -47,7 +47,8 @@
 
                             <div class="field">
                                 <div class="control">
-                                    <input type="checkbox" name="aceita-notificacao" id="">
+                                    <input type="checkbox" name="aceita-notificacao">
+                                    <label>Aceita notificacao</label>
                                 </div>
                             </div>
                             
