@@ -2,7 +2,7 @@
 
 session_start();
 
-include_once("./../conexao-bd/conexao.php");
+include ("./../conexao-bd/conexao.php");
 
 // verfificando se existem os campos e se são null
 if(isset($_POST["email"], $_POST["senha"]) && $_POST["email"] != NULL && $_POST["senha"] != NULL){

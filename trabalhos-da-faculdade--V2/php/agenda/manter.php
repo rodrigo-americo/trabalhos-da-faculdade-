@@ -1,39 +1,55 @@
 <?php
-	include 'conexao.php'; 
+	include("./../conexao-bd/conexao.php"); 
 
 	$acao=$_GET["acao"];
 
 	if ($acao == "Incluir")
 	{
-		$idContato=0;
-		$nome="";
-		$fone="";
+		$ID=0;
+		$Nome="";
+		$Valor="";
+		$foto="";
+		$Descricao="";
+		$Quantidade="";
 	}
 	else
 	{
-		$idContato=$_GET["idContato"];
+		$ID=$_GET["ID"];
 		
 		$sql = "SELECT * 
-				FROM contatos 
-				WHERE idContato=".$idContato;
-		$tabela = mysqli_query($conexao,$sql);
+				FROM produtos
+				WHERE ID=".$ID;
+		$tabela = mysqli_query($conn,$sql);
 		$linha = mysqli_fetch_array($tabela);
 		
-		$nome=$linha['nome'];
-		$fone=$linha['fone'];
+		$Nome=$linha['Nome'];
+		$Valor=$linha['Valor'];
+		$foto=$linha['foto'];
+		$Descricao=$linha['Descricao'];
+		$Quantidade=$linha['Quantidade'];
+
 	}
 ?>
 <html>
 	<head>
-		<title>Fatec Jundiai - Programa Exemplo PHP</title>
+		<title>Estoque</title>
 	</head>
 	<body>
-		<form name="dados" method="post" action="manterOk.php?idContato=<?php echo $idContato; ?>">
+		<form name="dados" method="post" action="manterOk.php?ID=<?php echo $ID; ?>">
 			<p>
-				Nome: <input type="text" name="nome" value="<?php echo $nome; ?>">
+				Nome: <input type="text" name="Nome" value="<?php echo $Nome; ?>">
 			</p>
 			<p>
-				Fone: <input type="text" name="fone" value="<?php echo $fone; ?>">
+				Valor: <input type="text" name="Valor" value="<?php echo $Valor; ?>">
+			</p>
+			<p>
+				Foto: <input type="text" name="foto" value="<?php echo $foto; ?>">
+			</p>
+			<p>
+				Quantidade: <input type="text" name="Quantidade" value="<?php echo $Quantidade; ?>">
+			</p>
+			<p>
+				Descricao: <input type="text" name="Descricao" value="<?php echo $Descricao; ?>">
 			</p>
 			<p>
 				<input type="submit" name="acao" value="<?php echo $acao; ?>">
@@ -43,5 +59,5 @@
 	</body>
 </html>
 <?php
-	mysqli_close($conexao);
+	mysqli_close($conn);
 ?>

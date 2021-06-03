@@ -1,4 +1,5 @@
 <?php
+include ("./../conexao-bd/conexao.php");
 	$acao=$_POST['acao'];
 
 	if ($acao == "Cancelar")
@@ -9,33 +10,39 @@
 	{
 		include 'conexao.php'; 
 
-		$idContato=$_GET['idContato'];
-		$nome=$_POST['nome'];
-		$fone=$_POST['fone'];
- 
+		$ID=$_GET['ID'];
+		$Nome=$_POST['Nome'];
+		$Valor=$_POST['Valor'];
+		$Foto=$_POST['Foto'];
+		$Descricao=$_POST['Descricao'];
+		$Quantidade=$_POST['Quantidade'];
+
 		switch ($acao) {
 			case "Alterar":
-				$sql = "UPDATE contatos SET 
-						nome='$nome', 
-						fone='$fone' 
-						WHERE idContato='$idContato'";
+				$sql = "UPDATE produtos SET 
+						Nome='$Nome', 
+						Valor='$Valor',
+						foto='$foto',
+						Descricao='$Descricao',
+						Quantidade='$Quantidade'
+						WHERE ID='$ID'";
 				break;
 			
 			case "Excluir":
-				$sql = "DELETE FROM contatos 
-						WHERE idContato='$idContato'";
+				$sql = "DELETE FROM produtos 
+						WHERE ID='$ID'";
 				break;
 			
 			case "Incluir":
-				$sql = "INSERT INTO contatos 
-						(nome, fone) 
+				$sql = "INSERT INTO produtos 
+						(Nome, Valor,foto,Descricao,Quantidade) 
 						VALUES 
-						('$nome', '$fone')";
+						('$Nome', '$Valor', '$foto', '$Descricao', '$Quantidade')";
 				break;
 		}
-		$tabela = mysqli_query($conexao,$sql) or die (mysqli_error());            
+		$tabela = mysqli_query($conn,$sql) or die (mysqli_error($conn));            
 		
-		mysqli_close($conexao);
+		mysqli_close($conn);
 	}
 	header("Location: index.php");
 ?>
