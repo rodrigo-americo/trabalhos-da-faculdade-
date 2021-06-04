@@ -1,8 +1,22 @@
 <?php
 session_start();
-include ('scripts-antigos(JSON)\funcao_carrinho.php');
-include ('scripts-antigos(JSON)\carrinho.php');
-include ('scripts-antigos(JSON)\lejson.php');
+
+include ('./funcao_carrinho.php');
+include ('./carrinho.php');
+include ('./scripts-antigos(JSON)/lejson.php');
+
+
+// checa se cliente está logado
+if(!isset($_SESSION["logado"]) || !isset($_SESSION["cliente"])){
+    $_SESSION["logado"] = FALSE;
+    $_SESSION["cliente"] = NULL;
+}
+$logado = $_SESSION["logado"];
+$cliente = $_SESSION["cliente"];
+
+if($logado === FALSE){
+    echo "<script> alert('Para comprar moedas você precisa fazer login antes senhor(a) .') </script>";
+}
 
 // chama a funcao de pegar a data atual
 $data = geradata();
@@ -21,12 +35,17 @@ if (isset($_POST['resetar'])) {
 // base para adicionar 
 if ( isset($_POST['produtos'])) {
     adicionar($_POST['produtos']);
+    //var_dump($_SESSION["carrinho"]);
+    //var_dump($_POST['produtos']);
+    //var_dump(count($_SESSION["carrinho"]));
 }
 
 $_SESSION['valor_com_desconto'] = $_SESSION['valortotal'] - ($_SESSION['valortotal'] * $_SESSION['desconto']);
 
 if (isset($_POST['enviar'])) {
-    criatxt($data);
+    salvarBD();
+    //criatxt($data);
+    resetar();
 }
 ?>
 <HTML>
@@ -64,7 +83,12 @@ if (isset($_POST['enviar'])) {
                         </div>
                         <div class="col-sm-12 col-md-6 mt-4  ">
                             <div class="d-grid gap-2">
-                                <button type="submit"  class="btn btn-outline-success btn-block  " name='adicionar' value="ADICIONAR">adicionar</button>
+                                <button type="submit"  class="btn btn-outline-success btn-block  " name='adicionar' value="ADICIONAR" <?php if($logado === FALSE) echo "disabled"; ?> >adicionar</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 mt-4  ">
+                            <div class="d-grid gap-2">
+                            <label for="cupom" class="form-label">Cliente: <?php echo $cliente ?></label>
                             </div>
                         </div>
                     </div>
@@ -74,23 +98,23 @@ if (isset($_POST['enviar'])) {
             <FORM ACTION="form_moedas.php" METHOD="post">
                 <div class="col-sm-12 col-md-6 mt-4  ">
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-outline-danger btn-block " name='resetar' value="RESET">Resetar</button>
+                        <button type="submit" class="btn btn-outline-danger btn-block " name='resetar' value="RESET" <?php if($logado === FALSE) echo "disabled"; ?> >Resetar</button>
                     </div>
                 </div>
             </FORM>
-            <!-- From abaixo engloba o campo enviar e os checkbox -->
+            <!-- Form abaixo engloba o campo enviar e os checkbox -->
             <FORM ACTION="form_moedas.php" METHOD="post">
                 <div class="col-sm-12 col-md-6">
                     <div class="mb-3">
                         <label for="entrega" class="form-label"> Tempo de entrega ? </label>
                         <div class="form-check">
-                            <input name="entrega" class="form-check-input" type="checkbox" value="24h" id="entrega">
+                            <input name="entrega-24h" class="form-check-input" type="checkbox" value="24h" id="entrega">
                             <label class="form-check-label" for="entrega">
                                 24h
                             </label>
                         </div>
                         <div class="form-check">
-                            <input name="entrega" class="form-check-input" type="checkbox" value="correios" id="entrega">
+                            <input name="entrega-correios" class="form-check-input" type="checkbox" value="correios" id="entrega">
                             <label class="form-check-label" for="entrega">
                                 correios
                             </label>
@@ -98,13 +122,15 @@ if (isset($_POST['enviar'])) {
                     </div>
                     <div class="col-sm-12 col-md-6 mt-4  ">
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-outline-success btn-block " name='enviar' value="ENVIAR">Enviar</button>
+                            <button type="submit" class="btn btn-outline-success btn-block " name='enviar' value="ENVIAR" <?php if($logado === FALSE) echo "disabled"; ?> >Enviar</button>
                         </div>
                     </div>
                 </div>
-                <P>VALOR:<?php echo $_SESSION['valortotal'] ?> </P>
+                <P>VALOR:<?php echo $_SESSION['valortotal']; ?> </P>
+                <P>VALOR COM DESCONTO:<?php echo $_SESSION['valor_com_desconto']; ?> </P>
             </FORM>
         </CENTER>
+        <a href="./../index.php">Voltar</a>
     </div>
 
 </BODY>

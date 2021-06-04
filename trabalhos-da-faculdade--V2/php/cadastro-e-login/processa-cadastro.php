@@ -18,7 +18,7 @@ if(isset($_POST["nome"], $_POST["senha"], $_POST["endereco"], $_POST["email"]) &
 if(isset($_POST["aceita-notificacao"])) $aceita_notificacao = boolval($_POST["aceita-notificacao"]);
 else $aceita_notificacao = 0;
 
-$query = "INSERT INTO clientes (Nome, Email, Endereco, Senha, Aceita_notificacao) 
+$query = "INSERT INTO Clientes (Nome, Email, Endereco, Senha, Aceita_notificacao) 
 VALUES ('".$nome."', '".$email."', '".$endereco."', '".$senha."', '".$aceita_notificacao."') ";
 
 $resultado_insert = mysqli_query($conn, $query);
