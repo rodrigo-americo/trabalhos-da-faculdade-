@@ -1,11 +1,23 @@
 <?php
+	session_start();
+	
 	include ("./../conexao-bd/conexao.php");
+
+	if(!isset($_SESSION['funcionario-logado']) || $_SESSION['funcionario-logado'] == FALSE ){
+		header('Location: ./../cadastro-e-login/login-funcionario.php');
+		die('Funcionário precisa realizar login');
+	}
+
 ?>
 <html>
 	<head>
 		<title>Estoque</title>
+		<link rel="stylesheet" href="./../../css/estoque.css" />
 	</head>
 	<body>
+		<h3>
+        	 <a href="./../../index.php">Página inicial.</a>                                
+        </h3>
 		<table align=center border=1 width=50%>
 			<tr>
 				<td align=center colspan=5>Produtos</td>
@@ -43,7 +55,7 @@
 					<?php echo $linha['Valor']; ?>
 				</td>
 				<td>
-					<?php echo $linha['foto']; ?>
+					<img src="./../../img/<?php echo $linha['Foto']; ?>" class="moeda"/>
 				</td>
 				<td>
 					<?php echo $linha['Quantidade']; ?>
@@ -53,12 +65,12 @@
 				</td>
 				<td width=50 align="center">
 					<a href="manter.php?acao=Alterar&ID=<?php echo $linha['ID']; ?>" >
-						<img src="imagens/alterar.png" border="0">
+						<img src="imagens/alterar.png" border="0" class="system-icon">
 					</a>
 				</td>
 				<td width=50 align="center">
 					<a href="manter.php?acao=Excluir&ID=<?php echo $linha['ID']; ?>">
-						<img src="imagens/excluir.png" border="0">
+						<img src="imagens/excluir.png" border="0" class="system-icon">
 					</a>
 				</td>
 			</tr>

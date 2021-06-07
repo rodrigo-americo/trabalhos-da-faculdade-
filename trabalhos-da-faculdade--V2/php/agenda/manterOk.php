@@ -19,25 +19,25 @@ include ("./../conexao-bd/conexao.php");
 
 		switch ($acao) {
 			case "Alterar":
-				$sql = "UPDATE produtos SET 
+				$sql = "UPDATE Produtos SET 
 						Nome='$Nome', 
 						Valor='$Valor',
-						foto='$foto',
+						Foto='$Foto',
 						Descricao='$Descricao',
 						Quantidade='$Quantidade'
 						WHERE ID='$ID'";
 				break;
 			
 			case "Excluir":
-				$sql = "DELETE FROM produtos 
+				$sql = "DELETE FROM Produtos 
 						WHERE ID='$ID'";
 				break;
 			
 			case "Incluir":
-				$sql = "INSERT INTO produtos 
-						(Nome, Valor,foto,Descricao,Quantidade) 
+				$sql = "INSERT INTO Produtos 
+						(Nome, Valor,Foto,Descricao,Quantidade) 
 						VALUES 
-						('$Nome', '$Valor', '$foto', '$Descricao', '$Quantidade')";
+						('$Nome', '$Valor', '$Foto', '$Descricao', '$Quantidade')";
 				break;
 		}
 		$tabela = mysqli_query($conn,$sql) or die (mysqli_error($conn));            

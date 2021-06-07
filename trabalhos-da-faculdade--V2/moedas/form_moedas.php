@@ -6,6 +6,8 @@ include ('./carrinho.php');
 include ('./scripts-antigos(JSON)/lejson.php');
 include ('./../pdf/gerar_pdf.php');
 
+//desloga funcionario
+$_SESSION['funcionario-logado'] = FALSE;
 
 // checa se cliente está logado
 if(!isset($_SESSION["logado"]) || !isset($_SESSION["cliente"])){

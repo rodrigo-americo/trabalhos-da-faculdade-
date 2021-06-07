@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+include("./php/conexao-bd/conexao.php");
+
+//desloga funcionario
+$_SESSION['funcionario-logado'] = FALSE;
+
 // checa se cliente está logado
 if(!isset($_SESSION["logado"]) || !isset($_SESSION["cliente"])){
     $_SESSION["logado"] = FALSE;
@@ -143,6 +148,7 @@ $cliente = $_SESSION["cliente"];
     <div class="col-100 bloco-imagens-texto">
         <div class="content">
             <?php
+            /* Versão antiga em JSON
                 include'moedas/scripts-antigos(JSON)/lejson.php';
                 $produtos=lejason('moedas/scripts-antigos(JSON)/Produtos.json');
                 foreach($produtos as $produto){
@@ -153,7 +159,21 @@ $cliente = $_SESSION["cliente"];
                     <b>".$produto->valor.".</b>
                     </p>
                     </div>";
+                }*/
+                $query = "SELECT Nome, Valor, Descricao, Foto FROM Produtos";
+
+                $resultado_select = mysqli_query($conn, $query);
+
+                while($produto = mysqli_fetch_array($resultado_select)){
+                    echo "<div class='col-3 bloco-texto bloco-imagem '>
+                    <img src='./img/".$produto['Foto']."'>
+                    <p><b>".$produto['Nome']."</b></p>
+                    <p>".$produto['Descricao']."
+                    <b>".$produto['Valor'].".</b>
+                    </p>
+                    </div>";
                 }
+
             ?>
             
         </div>
@@ -193,6 +213,7 @@ $cliente = $_SESSION["cliente"];
                 <div class="col-4">
                     <h3><b>Tags</b></h3>
                     <p>Busca nas nossas redes sociais marque com #CoinsRaridades.</p>
+                    <p>Área de funcionários: <a href="./php/agenda/index.php">Administrar estoque</a></p>
                 </div>
                 <div class="col-4">
                     <h3><b>Sobre nós</b></h3>

@@ -17,6 +17,8 @@ if($logado === TRUE){
     echo "<script> alert('Você já está logado, senhor(a) ".$cliente.".') </script>";
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -37,14 +39,14 @@ if($logado === TRUE){
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Login</h3>
+                    <h3 class="title has-text-grey">Login para funcionários</h3>
                     
                     
                     <div class="box">
-                        <form action="processa-login.php" method="POST">
+                        <form action="processa-login-funcionario.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input type='email' name="email" class="input is-large" placeholder="email" <?php if($logado === TRUE) echo "disabled"; ?> >
+                                    <input name="matricula" class="input is-large" placeholder="Matricula" <?php if($logado === TRUE) echo "disabled"; ?> >
                                 </div>
                             </div>
 
@@ -54,11 +56,6 @@ if($logado === TRUE){
                                 </div>
                             </div>
                             <input type="submit" value="Entrar" class="button is-block is-link is-large is-fullwidth"></button>
-                            <div>
-                                <h3>
-                                <a href="cadastro.php" target="_blank">Criar conta</a>                                
-                                </h3>
-                            </div>
                             <div>
                                 <h3>
                                 <a href="./../../index.php">Página inicial.</a>                                

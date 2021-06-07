@@ -8,7 +8,7 @@
 		$ID=0;
 		$Nome="";
 		$Valor="";
-		$foto="";
+		$Foto="";
 		$Descricao="";
 		$Quantidade="";
 	}
@@ -17,14 +17,14 @@
 		$ID=$_GET["ID"];
 		
 		$sql = "SELECT * 
-				FROM produtos
+				FROM Produtos
 				WHERE ID=".$ID;
 		$tabela = mysqli_query($conn,$sql);
 		$linha = mysqli_fetch_array($tabela);
 		
 		$Nome=$linha['Nome'];
 		$Valor=$linha['Valor'];
-		$foto=$linha['foto'];
+		$Foto=$linha['Foto'];
 		$Descricao=$linha['Descricao'];
 		$Quantidade=$linha['Quantidade'];
 
@@ -43,7 +43,7 @@
 				Valor: <input type="text" name="Valor" value="<?php echo $Valor; ?>">
 			</p>
 			<p>
-				Foto: <input type="text" name="foto" value="<?php echo $foto; ?>">
+				Foto: <input type="text" name="Foto" value="<?php echo $Foto; ?>">
 			</p>
 			<p>
 				Quantidade: <input type="text" name="Quantidade" value="<?php echo $Quantidade; ?>">
