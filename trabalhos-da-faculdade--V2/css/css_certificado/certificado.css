@@ -1,0 +1,17 @@
+body {
+    background-color: #B0C4DE;
+}
+
+h1 {
+    color: #A52A2A;
+}
+
+p {
+    color: #00008B;
+}
+
+img {
+    position: absolute;
+    right: 20%;
+    top: 80%;
+}

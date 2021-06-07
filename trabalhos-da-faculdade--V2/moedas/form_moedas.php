@@ -4,6 +4,7 @@ session_start();
 include ('./funcao_carrinho.php');
 include ('./carrinho.php');
 include ('./scripts-antigos(JSON)/lejson.php');
+include ('./../pdf/gerar_pdf.php');
 
 
 // checa se cliente está logado
@@ -43,9 +44,13 @@ if ( isset($_POST['produtos'])) {
 $_SESSION['valor_com_desconto'] = $_SESSION['valortotal'] - ($_SESSION['valortotal'] * $_SESSION['desconto']);
 
 if (isset($_POST['enviar'])) {
-    salvarBD();
+    $compra_concluida = salvarBD();
     //criatxt($data);
+    if($compra_concluida === TRUE){
+        gerarPDF($_SESSION['carrinho']);
+    }
     resetar();
+
 }
 ?>
 <HTML>

@@ -22,7 +22,7 @@ function adicionar($ID){
     if (!ja_tem($ID)) {
         $produto = buscarProduto($ID);
         $_SESSION['valortotal'] += floatval($produto['Valor']);
-        array_push($_SESSION['carrinho'], array('ID' => $produto['ID'],'Quantidade' => 1, 'Valor' => floatval($produto['Valor'])));
+        array_push($_SESSION['carrinho'], array('ID' => $produto['ID'],'Quantidade' => 1, 'Valor' => floatval($produto['Valor']), 'Nome' => $produto['Nome']));
     }else{
         for($i = 0; $i< count($_SESSION['carrinho']); $i++){
             if($_SESSION['carrinho'][$i]['ID'] == $ID){
@@ -67,7 +67,7 @@ function cria_lista_de_produtos(){
 }
 
 function salvarBD(){
-    if($_SESSION['carrinho'] == NULL || count($_SESSION['carrinho']) == 0  || $_SESSION['email-cliente'] == NULL) return;
+    if($_SESSION['carrinho'] == NULL || count($_SESSION['carrinho']) == 0  || $_SESSION['email-cliente'] == NULL) return FALSE;
     
     $conn = ligaBD();
 
@@ -98,8 +98,12 @@ function salvarBD(){
     }else{
         echo "<script> alert('Falha ao processar compra.') </script>";
         echo mysqli_error($conn);
+        mysqli_close($conn);
+        return FALSE;
     }
 
     mysqli_close($conn);
+
+    return TRUE;
 }
 ?>

@@ -26,7 +26,7 @@
 <?php
 	// Fazendo uma consulta SQL
 	$sql = "SELECT * 
-			FROM produtos 
+			FROM Produtos 
 			ORDER BY id";
 	$tabela = mysqli_query($conn,$sql);
 	while ($linha = mysqli_fetch_array($tabela))
